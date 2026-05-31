@@ -7,7 +7,10 @@ import {
   deleteCategory,
 } from "../controllers/category.controller";
 
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+
 const categoryRoutes = new Hono();
+categoryRoutes.use("*", authMiddleware);
 
 categoryRoutes.get("/", getCategories);
 categoryRoutes.get("/:id", getCategoryById);

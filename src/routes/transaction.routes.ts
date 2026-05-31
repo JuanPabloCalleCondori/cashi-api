@@ -8,7 +8,11 @@ import {
   getBalance,
 } from "../controllers/transaction.controller.js";
 
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+
 const transactionRoutes = new Hono();
+
+transactionRoutes.use("*", authMiddleware);
 
 transactionRoutes.get("/", getTransactions);
 
