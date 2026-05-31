@@ -1,15 +1,24 @@
 import prisma from "../lib/prisma.js";
 
 export const transactionRepository = {
-  findAll: () =>
+  findAll: (userId: number) =>
     prisma.transaction.findMany({
-      include: { category: true },
+      where: {
+        userId,
+      },
+      include: {
+        category: true,
+      },
     }),
 
   findById: (id: number) =>
     prisma.transaction.findUnique({
-      where: { id },
-      include: { category: true },
+      where: {
+        id,
+      },
+      include: {
+        category: true,
+      },
     }),
 
   create: (data: any) =>
@@ -19,7 +28,13 @@ export const transactionRepository = {
         type: data.type,
         description: data.description,
         date: new Date(data.date),
+
+        receiptUrl: data.receiptUrl,
+        latitude: data.latitude,
+        longitude: data.longitude,
+
         categoryId: data.categoryId,
+        userId: data.userId,
       },
     }),
 
@@ -28,7 +43,9 @@ export const transactionRepository = {
       where: { id },
       data: {
         ...data,
-        date: data.date ? new Date(data.date) : undefined,
+        date: data.date
+          ? new Date(data.date)
+          : undefined,
       },
     }),
 
