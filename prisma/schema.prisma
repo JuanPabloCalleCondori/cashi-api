@@ -13,12 +13,30 @@ model Category {
   transactions Transaction[]
 }
 
+
+model User {
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  passwordHash  String
+  createdAt     DateTime      @default(now())
+
+  transactions  Transaction[]
+}
+
 model Transaction {
   id          Int      @id @default(autoincrement())
   amount      Float
   type        String
   description String?
   date        DateTime
+
+  receiptUrl  String?
+  latitude    Float?
+  longitude   Float?
+
   categoryId  Int
   category    Category @relation(fields: [categoryId], references: [id])
+
+  userId      Int
+  user        User @relation(fields: [userId], references: [id])
 }
