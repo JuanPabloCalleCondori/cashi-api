@@ -8,7 +8,7 @@ import {
   loginSchema,
 } from "../schemas/auth.schema.js";
 
-const JWT_SECRET = "super-secret-key";
+const JWT_SECRET = process.env.JWT_SECRET!;
 
 export const register = async (c: Context) => {
   const body = await c.req.json();
@@ -40,7 +40,8 @@ export const register = async (c: Context) => {
     {
       userId: user.id,
     },
-    JWT_SECRET
+    JWT_SECRET,
+    { expiresIn: "7d" }
   );
 
   return c.json({
@@ -80,7 +81,8 @@ export const login = async (c: Context) => {
     {
       userId: user.id,
     },
-    JWT_SECRET
+    JWT_SECRET,
+    { expiresIn: "7d" }
   );
 
   return c.json({

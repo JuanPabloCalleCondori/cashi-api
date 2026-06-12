@@ -19,9 +19,14 @@ app.route("/categories", categoryRoutes);
 app.route("/transactions", transactionRoutes);
 app.route("/transactions/upload", uploadRoutes);
 
+
+const port = Number(process.env.PORT) || 3000;
+
 serve({
   fetch: app.fetch,
-  port: 3000,
+  port,
 });
+
+console.log(`Servidor corriendo en puerto ${port}`);
 
 console.log("Servidor corriendo en http://localhost:3000");

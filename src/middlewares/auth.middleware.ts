@@ -1,7 +1,7 @@
 import { Context, Next } from "hono";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = "super-secret-key";
+const JWT_SECRET = process.env.JWT_SECRET!;
 
 export const authMiddleware = async (
   c: Context,
