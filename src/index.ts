@@ -29,4 +29,3 @@ serve({
 
 console.log(`Servidor corriendo en puerto ${port}`);
 
-console.log("Servidor corriendo en http://localhost:3000");
