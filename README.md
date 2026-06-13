@@ -1,5 +1,7 @@
 # 💰 Cashi API
 
+URL PUBLICA SERVIDOR: https://cashi-api-bnii.onrender.com
+
 [![Node.js Version](https://img.shields.io/badge/node-18.x+-green)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/typescript-6.0+-blue)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
